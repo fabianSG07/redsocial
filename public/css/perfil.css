@@ -1,0 +1,31 @@
+/* Completar Perfil */
+
+.completarPerfil {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+hr {
+    width: 100%
+}
+
+.container-perfil {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-completar-perfil {
+    width: 100%;
+}
+
+.content-completar-perfil form {
+    width: 70%;
+}
+

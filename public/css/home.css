@@ -1,0 +1,144 @@
+.container-style-main {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.perfil-usuario-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil-usuario-main img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 10px;
+    border-radius: 50%;
+}
+
+.foto-separation {
+    width: 100%;
+    height: 30px;
+}
+
+.background-usuario-main {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 80px;
+    width: 100%;
+    background-color: #926dde;
+}
+
+.nombre-perfil {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.tabla-estadisticas {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.tabla-estadisticas a {
+    font-weight: bold;
+    color: #5d5d5d;
+    font-size: 12px;
+    text-decoration: none;
+    line-height: 16px;
+    transition: all .5s
+}
+
+.tabla-estadisticas a:hover {
+    color: #926dde
+} 
+
+.container-usuario-publicar {
+    width: 100%;
+    display: flex;
+    padding: 20px;
+
+}
+
+.published {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    overflow: hidden;
+    resize: none;
+}
+
+.published:focus {
+    border: 1px solid #926dde;
+}
+
+.image-border {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.image-upload-file {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.form-publicar {
+    width: 100%
+}
+
+.upload-photo {
+    background-color: #dddddd;
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    color: #747474;
+}
+
+.btn-publi {
+    border: 0;
+    height: 30px;
+    border-radius: 18px;
+    color: #747474;
+    transition: all .5s
+}
+
+.btn-publi:hover {
+    background-color: #926dde;
+    color: #ffffff
+}
+
+.image-public {
+    width: 20px;
+    height: 20px;
+}
+
+.input-file {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+
+.input-file input {
+    cursor: pointer;
+    width: 120px;
+}
+
+@media screen and (max-width: 500px) {
+    .container-usuario-publicar {
+        margin-top: 10px;
+    }
+}
