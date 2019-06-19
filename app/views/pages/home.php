@@ -15,7 +15,7 @@ include_once URL_APP . '/views/custom/navbar.php';
                     <div class="background-usuario-main"></div>
                     <img src="<?php echo URL_PROJECT . '/' . $datos['perfil']->fotoPerfil ?>" alt="">
                     <div class="foto-separation"></div>
-                    <div class="text-center nombre-perfil"><?php echo $datos['perfil']->nombreCompleto ?></div>
+                    <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datos['usuario']->usuario ?>" class="links"><div class="text-center nombre-perfil"><?php echo $datos['perfil']->nombreCompleto ?></div></a>
                     <div class="tabla-estadisticas">
                         <a href="#">Publicaciones <br> 0 </a>
                         <a href="#">Me gustas <br> 0</a>
@@ -27,7 +27,7 @@ include_once URL_APP . '/views/custom/navbar.php';
         <div class="col-md-6">
             <div class="container-style-main">
                 <div class="container-usuario-publicar">
-                    <img src="<?php echo URL_PROJECT . '/' . $datos['perfil']->fotoPerfil ?>" class="image-border " alt="">
+                    <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datos['usuario']->usuario ?>"><img src="<?php echo URL_PROJECT . '/' . $datos['perfil']->fotoPerfil ?>" class="image-border " alt=""></a>
                     <form action="" class="form-publicar ml-2">
                         <textarea name="" id="" class="published mb-0" name="post" placeholder="Que estas pensando?" required></textarea>
                         <div class="image-upload-file">

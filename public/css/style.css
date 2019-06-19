@@ -2,6 +2,15 @@
     --main-color: #926dde
 }
 
+.links {
+    color: #5d5d5d
+}
+
+.links:hover {
+    text-decoration: none;
+    color: #5d5d5d
+}
+
 .big {
     font-size: 1.2em;
 }

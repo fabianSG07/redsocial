@@ -37,6 +37,7 @@ class usuario
     {
         $this->db->query('SELECT usuario FROM usuarios WHERE usuario = :user');
         $this->db->bind(':user', $datosUsuario['usuario']);
+        $this->db->execute();
         if ($this->db->rowCount()) {
             return false;
         } else {
