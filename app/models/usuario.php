@@ -17,6 +17,12 @@ class usuario
         return $this->db->register();
     }
 
+    public function getUsuarios()
+    {
+        $this->db->query('SELECT idusuario , usuario FROM usuarios');
+        return $this->db->registers();
+    }
+
     public function getPerfil($idusuario)
     {
         $this->db->query('SELECT * FROM perfil WHERE idUsuario = :id');
@@ -72,5 +78,28 @@ class usuario
         } else {
             return false;
         }
+    }
+
+    public function getAllUsuarios()
+    {
+        $this->db->query('SELECT U.idusuario , U.usuario , P.fotoPerfil , P.nombreCompleto FROM usuarios U
+        INNER JOIN perfil P ON P.idUsuario = U.idusuario');
+        return $this->db->registers();
+    }
+
+    public function getCantidadUsuarios()
+    {
+        $this->db->query('SELECT idusuario FROM usuarios'); 
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function buscar($busqueda)
+    {
+        $this->db->query('SELECT U.usuario , P.fotoPerfil , P.nombreCompleto FROM usuarios U
+        INNER JOIN perfil P ON P.idUsuario = U.idusuario
+        WHERE U.usuario LIKE :buscar ');
+        $this->db->bind(':buscar' , $busqueda);
+        return $this->db->registers();
     }
 }

@@ -70,9 +70,7 @@ include_once URL_APP . '/views/custom/navbar.php';
 
 
                 <div class="col-md-2">
-                    <div class="container-usuario-contact">
-                        <a href="" class="btn-message"><span class="big"><i class="far fa-envelope"></i></span>Mensaje</a>
-                    </div>
+                  
                 </div>
             </div>
         </div>

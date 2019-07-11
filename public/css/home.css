@@ -1,9 +1,10 @@
-.container-style-main {
-    background-color: #ffffff;
-    border-radius: 10px;
-}
 
 .perfil-usuario-main {
+    background-color: #ffffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 19px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,6 +59,8 @@
 } 
 
 .container-usuario-publicar {
+    background-color: #ffffff;
+    border-radius: 10px;
     width: 100%;
     display: flex;
     padding: 20px;
@@ -136,6 +139,110 @@
 .input-file input {
     cursor: pointer;
     width: 120px;
+}
+
+.container-usuarios-publicaciones {
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.usuarios-publicaciones-top {
+    width: 100%;
+    display: flex;
+}
+
+.informacion-usuario-publico {
+    margin-left: 10px;
+    display: block;
+}
+
+.contenido-publicacion-usuario {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.imagen-publicacion-usuario {
+    width: 100%;
+    object-fit: cover;
+}
+
+.acciones-publicacion-usuario {
+    margin-left: auto;
+}
+
+.acciones-usuario-publicar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.acciones-usuario-publicar a {
+    text-decoration: none;
+    color: #5d5d5d;
+}
+
+.like-active {
+    color: #926dde !important;
+}
+
+
+.like-user:hover {
+    color: #926dde 
+}
+
+.formulario-comentarios {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+}
+
+.acciones-formulario-comentario {
+    width: 100%
+}
+
+.form-comentario-usuario {
+    border: 0;
+    border-bottom: 1px solid #747474a8;
+    width: 100%;
+    padding: .4em .5em .4em .8em;
+    outline: none;
+}
+
+.btn-comentario-container {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end
+}
+
+.container-contenido-comentarios {
+    display: flex;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.contenido-comentario-usuario {
+    width: 100%
+}
+
+.image-big-user {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.elemento-usuario-registrado {
+    display: flex;
+    align-items: center;
+}
+
+.nombre-usuario-registrado a {
+    text-decoration: none;
 }
 
 @media screen and (max-width: 500px) {

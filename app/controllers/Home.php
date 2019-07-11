@@ -5,6 +5,7 @@ class Home extends Controller
     public function __construct()
     {
         $this->usuario = $this->model('usuario');
+        $this->publicaciones = $this->model('publicar');
     }
 
     public function index()
@@ -14,15 +15,32 @@ class Home extends Controller
             $datosUsuario = $this->usuario->getUsuario($_SESSION['usuario']);
             $datosPerfil = $this->usuario->getPerfil($_SESSION['logueado']);
 
+            $datosPublicaciones = $this->publicaciones->getPublicaciones();
+
+            $verificarLike = $this->publicaciones->misLikes($_SESSION['logueado']);
+
+            $comentarios = $this->publicaciones->getComentarios();
+
+            $informacionComentarios = $this->publicaciones->getInformacionComentarios($comentarios);
+
+            $misNotificaciones = $this->publicaciones->getNotificaciones($_SESSION['logueado']);
+
+            $misMensajes = $this->publicaciones->getMensajes($_SESSION['logueado']);
+
             if ($datosPerfil) {
                 $datosRed = [
                     'usuario' => $datosUsuario,
-                    'perfil' => $datosPerfil
+                    'perfil' => $datosPerfil,
+                    'publicaciones' => $datosPublicaciones,
+                    'misLikes' => $verificarLike,
+                    'comentarios' => $informacionComentarios,
+                    'misNoticaciones' => $misNotificaciones,
+                    'misMensajes' => $misMensajes
                 ];
 
                 $this->view('pages/home', $datosRed);
             } else {
-                $this->view('pages/perfil/completarPerfil' , $_SESSION['logueado']);
+                $this->view('pages/perfil/completarPerfil', $_SESSION['logueado']);
             }
         } else {
             redirection('/home/login');
@@ -87,11 +105,11 @@ class Home extends Controller
 
     public function insertarRegistrosPerfil()
     {
-       $carpeta = 'C:/xampp/htdocs/redsocial/public/img/imagenesPerfil/';
-       opendir($carpeta);
-       $rutaImagen = 'img/imagenesPerfil/' . $_FILES['imagen']['name']; 
-       $ruta = $carpeta . $_FILES['imagen']['name'];
-       copy($_FILES['imagen']['tmp_name'] , $ruta);
+        $carpeta = 'C:/xampp/htdocs/redsocial/public/img/imagenesPerfil/';
+        opendir($carpeta);
+        $rutaImagen = 'img/imagenesPerfil/' . $_FILES['imagen']['name'];
+        $ruta = $carpeta . $_FILES['imagen']['name'];
+        copy($_FILES['imagen']['tmp_name'], $ruta);
 
         $datos = [
             'idusuario' => trim($_POST['id_user']),
@@ -99,7 +117,7 @@ class Home extends Controller
             'ruta' => $rutaImagen
         ];
 
-        if($this->usuario->insertarPerfil($datos)) {
+        if ($this->usuario->insertarPerfil($datos)) {
             redirection('/home');
         } else {
             echo 'El perfil no se ha guardado';
@@ -115,5 +133,69 @@ class Home extends Controller
         session_destroy();
 
         redirection('/home');
+    }
+
+    public function usuarios()
+    {
+        if (isset($_SESSION['logueado'])) {
+
+            $datosUsuario = $this->usuario->getUsuario($_SESSION['usuario']);
+            $datosPerfil = $this->usuario->getPerfil($_SESSION['logueado']);
+            $misNotificaciones = $this->publicaciones->getNotificaciones($_SESSION['logueado']);
+            $misMensajes = $this->publicaciones->getMensajes($_SESSION['logueado']);
+            $usuariosRegistrados = $this->usuario->getAllUsuarios();
+            $cantidadUsuarios = $this->usuario->getCantidadUsuarios();
+
+            if ($datosPerfil) {
+                $datosRed = [
+                    'usuario' => $datosUsuario,
+                    'perfil' => $datosPerfil,
+                    'misNoticaciones' => $misNotificaciones,
+                    'misMensajes' => $misMensajes,
+                    'allUsuarios' => $usuariosRegistrados,
+                    'cantidadUsuarios' => $cantidadUsuarios
+                ];
+                $this->view('pages/usuarios/usuarios', $datosRed);
+            } else {
+                redirection('/home');
+            }
+        }
+    }
+
+    public function buscar()
+    {
+        if (isset($_SESSION['logueado'])) {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $busqueda = '%' . trim($_POST['buscar']) . '%';
+                $datosBusqueda = $this->usuario->buscar($busqueda);
+
+                
+                $datosUsuario = $this->usuario->getUsuario($_SESSION['usuario']);
+                $datosPerfil = $this->usuario->getPerfil($_SESSION['logueado']);
+                $misNotificaciones = $this->publicaciones->getNotificaciones($_SESSION['logueado']);
+                $misMensajes = $this->publicaciones->getMensajes($_SESSION['logueado']);
+
+
+                if ($datosPerfil) {
+                    $datosRed = [
+                        'usuario' => $datosUsuario,
+                        'perfil' => $datosPerfil,
+                        'misNoticaciones' => $misNotificaciones,
+                        'misMensajes' => $misMensajes,
+                        'resultado' => $datosBusqueda
+                    ];
+
+                    if ($datosBusqueda) {
+                        $this->view('pages/busqueda/buscar' , $datosRed);
+                    } else {
+                        redirection('/home');
+                    }
+                } else {
+                    redirection('/home');
+                }
+            } else {
+                redirection('/home');
+            }
+        }
     }
 }
