@@ -4,7 +4,7 @@ Options -Multiviews
 Options -Indexes
 
 RewriteEngine On
-RewriteBase /kismu/projects/redsocial/public/
+RewriteBase /redsocial/public/
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
