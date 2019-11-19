@@ -10,5 +10,5 @@ define('DB_PASSWORD' , '');
 // definir las constantes de nuestro proyecto
 
 define('URL_APP' , dirname(dirname(__FILE__)));
-define('URL_PROJECT' , 'http://localhost/kismu/projects/redsocial');
+define('URL_PROJECT' , 'http://localhost/redsocial');
 define('NAME_PROJECT' , 'Red Social');
